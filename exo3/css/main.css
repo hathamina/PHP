@@ -1,0 +1,24 @@
+.resultat {
+  padding: 10px;
+  margin-top: 10px;
+  border: 2px solid black;
+  background-color: green;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #273646;
+}
+li {
+  padding: 10px 20px;
+}
+li:hover {
+  background-color: rgb(67, 67, 194);
+}
+li a {
+  color: white;
+  text-decoration: none;
+}
