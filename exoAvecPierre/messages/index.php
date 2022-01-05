@@ -20,6 +20,20 @@ require_once 'logique.php';
 
     <div class="container">
 
+        <form action="createMessage.php" method="POST">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+
+                <input type="text" name="auteur" placeholder="Votre nom">
+                <textarea name="description" cols="25" rows="3" placeholder="Votre Message"></textarea>
+                <button type="submit" class="btn btn-success">Poster</button>
+            </div>
+
+        </form>
+
+    </div>
+
+    <div class="container">
+
     <?php foreach($messages as $message){ ?>
 
         <hr>
