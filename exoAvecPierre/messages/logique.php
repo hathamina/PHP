@@ -2,45 +2,45 @@
 
 
 
-$messages= [
-    [
-        "auteur"=>"Luc",
-        "description"=>"salut"
-    ],
-    [
-        "auteur"=>"Patricia",
-        "description"=>"je sais pas quoi ecrire"
-    ],
-    [
-        "auteur"=>"Anna",
-        "description"=>"moi je sais"
-    ],
-    [
-        "auteur"=>"Robby",
-        "description"=>"ce matin j'ai mangé une pomme"
-    ],
-];
+// $messages= [
+//     [
+//         "auteur"=>"Luc",
+//         "description"=>"salut"
+//     ],
+//     [
+//         "auteur"=>"Patricia",
+//         "description"=>"je sais pas quoi ecrire"
+//     ],
+//     [
+//         "auteur"=>"Anna",
+//         "description"=>"moi je sais"
+//     ],
+//     [
+//         "auteur"=>"Robby",
+//         "description"=>"ce matin j'ai mangé une pomme"
+//     ],
+// ];
 ///////////////////////
 // SE CONNECTER
 ///////////////////////
-// il faut enter les informations qu'on a utilisé pour ajouter un compte d'utilisateur sur phpMyAdmin et les stocké dans des variable 
+// il faut enter les informations qu'on a utilisé dans la base de donnée et les stocké dans des variables 
 $hote = 'localhost'; 
 $username = 'amina';
 $password = '*1989*';
 $basseDeDonnee = 'messages';
 
 // pour se connecter a la base de donnée il faut utiliser la methode Mysqli_connect
-// cette methode mysqli_connect nous renvoie un boolean donc il faut la stocké dans une variable pour la reutiliser
+
  
 $maConnection = mysqli_connect($hote, $username, $password, $basseDeDonnee);
 
-// pour tester la connection si on est bien connecter et on a pas de fautes dans les informations qu'on a entrer => on vois le message bien connecter
-if($maConnection){
-    echo "bine connecter";
-}
+// pour tester la connection si on est bien connecter 
+// if($maConnection){
+//     echo "bine connecter";
+// }
 
-// mettre ce teste et le laisser pour pouvoir voir si j ai une erreur donc 
-//mieu de laisser ce teste pour voir voir quand on aura des fautes 
+
+//mieu de laisser ce teste pour voir les erreurs
 if(!$maConnection){
     echo "tu as un problème";
 }
@@ -50,11 +50,31 @@ if(!$maConnection){
 ////////////////////////////////////
 
 
-// on ecrit une requete sql pour nous renvoyer les donner et on la stock dans une variable 
+if(
+    isset($_GET['id'])
+&& !empty($_GET['id'])
+){
+ 
+    //on cree une variable et on donne la valeur false
+    $modeEdition = false;
+    if(isset($_GET['modif'])){
+        $modeEdition=true;
+    }
+
+    $id=htmlspecialchars($_GET['id']);
+
+    $AfficherUnMessage = "SELECT messages.id, messages."
+
+}
+
+
+
+
+
+// une requete sql
 $maRequete = "SELECT * FROM messages";
 
-// pour envoyer la requete , messages c'est le nome de la table
-// mysqli_query sert a envoyer et inserer qlq chose dans la table sql
+
 // elle nous envoi si la requet envoyer avec succer ou pas
 $messages = mysqli_query($maConnection, $maRequete);
 

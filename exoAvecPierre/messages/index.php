@@ -22,7 +22,6 @@ require_once 'logique.php';
 
         <form action="createMessage.php" method="POST">
             <div class="d-flex flex-column align-items-center justify-content-center">
-
                 <input type="text" name="auteur" placeholder="Votre nom">
                 <textarea name="description" cols="25" rows="3" placeholder="Votre Message"></textarea>
                 <button type="submit" class="btn btn-success">Poster</button>
@@ -35,12 +34,18 @@ require_once 'logique.php';
     <div class="container">
 
     <?php foreach($messages as $message){ ?>
-
-        <hr>
+      
+            <hr>
             <h3 style="color:teal"><?php echo $message['auteur'] ?></h3>
             <p><?php echo $message['description'] ?></p>
-        <hr>
-
+            <form action="deleteMessage.php" method="POST">
+                <button type="submit" class="btn btn-danger" name="supp" value="<?php echo $message['id']?>"> <strong>X</strong></button>
+            </form>
+            <a href="afficherUnSeulMessage.php?id=<?= $message['id'] ?>" class="btn btn-light">voir le message</a>
+            <hr>
+        
     <?php } ?>
+
+    </div>
 </body>
 </html>

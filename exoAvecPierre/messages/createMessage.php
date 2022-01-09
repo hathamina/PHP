@@ -12,6 +12,10 @@ if(!$maConnection){
 }
 //recupérer les données entrées dans le formulaire (le message)
 
+
+
+
+
 if(
     (isset($_POST['auteur']) && !empty($_POST['auteur']))
     &&
@@ -21,13 +25,16 @@ if(
     $auteur = $_POST['auteur'];
     $description = $_POST['description'];
 
+    // pour que l utilisateur ne peut pas ecrire de html 
+    $auteur = htmlspecialchars($auteur);
+    $description = htmlspecialchars($description);
+
     $nouveauMessage =  "INSERT INTO messages (auteur,description) 
-                        VALUES ('$auteur' ,'$description' )";
+                        VALUES ('$auteur' ,'$description')";
 
 
    $resultatDeMaRequete = mysqli_query($maConnection, $nouveauMessage);
       
-
    // pour la redirection a la page acceuil header('location:index.php)
    header("Location: index.php");
 }
